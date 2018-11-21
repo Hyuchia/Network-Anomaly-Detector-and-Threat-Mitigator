@@ -132,10 +132,10 @@ payload are transformed into a `string` and then it checks if any of the keyword
 The code has been documented and there are also diagrams available such as:
 
 ### Class Diagram
-![Class Diagram](./docs/Class Diagram.jpg)
+![Class Diagram](https://raw.githubusercontent.com/Hyuchia/Network-Anomaly-Detector-and-Threat-Mitigator/master/docs/Class%20Diagram.jpg)
 
 ### Functionality Process Diagram
-![Functionality Process Diagram](./docs/Functionality Process.jpg)
+![Functionality Process Diagram](https://raw.githubusercontent.com/Hyuchia/Network-Anomaly-Detector-and-Threat-Mitigator/master/docs/Functionality%20Process.jpg)
 
 ## Output
 
