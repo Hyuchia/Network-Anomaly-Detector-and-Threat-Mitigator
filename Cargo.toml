@@ -1,0 +1,20 @@
+[package]
+name = "network-anomaly-detector-and-threat-mitigator"
+version = "0.1.0"
+authors = [
+	"Alejandra Cuéllar Gonzalez <A01333324@itesm.mx>",
+	"Cinthya Daniela Lugo Novoa <A01332942@itesm.mx>",
+	"Diego Islas Ocampo <A01332956@itesm.mx>",
+	"Irvin Uriel Mundo Rivera <A01333820@itesm.mx>",
+	"Luis Fernando Saavedra Meza <A01333410@itesm.mx>"
+]
+
+[dependencies]
+colored = "1.6.1"
+hash_ord = "0.1.10"
+dns-lookup = "1.0.0"
+chrono = "0.4"
+time = "0.1"
+
+[dependencies.pnet]
+version = "0.21.0"
