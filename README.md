@@ -83,21 +83,21 @@ Flags:
 * `-N`: Change Network Settings
 
 ```bash
-./botnet-tracker <Interface_Name> [<Action_Flag>]
+./network-anomaly-detector-and-threat-mitigator <Interface_Name> [<Action_Flag>]
 ```
 
 Examples:
 
 ```bash
-./botnet-tracker eth0
+./network-anomaly-detector-and-threat-mitigator eth0
 ```
 
 ```bash
-./botnet-tracker eth0 -I
+./network-anomaly-detector-and-threat-mitigator eth0 -I
 ```
 
 ```bash
-./botnet-tracker eth0 -N
+./network-anomaly-detector-and-threat-mitigator eth0 -N
 ```
 
 Once the program is started, it will start picking up the packets on the network, analysing them and in case anomalous 
