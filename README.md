@@ -132,10 +132,10 @@ payload are transformed into a `string` and then it checks if any of the keyword
 The code has been documented and there are also diagrams available such as:
 
 ### Class Diagram
-![Class Diagram](./Diagram Documentation/Class Diagram.jpg)
+![Class Diagram](./docs/Class Diagram.jpg)
 
 ### Functionality Process Diagram
-![Functionality Process Diagram](./Diagram Documentation/Functionality Process.jpg)
+![Functionality Process Diagram](./docs/Functionality Process.jpg)
 
 ## Output
 
