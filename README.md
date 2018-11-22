@@ -83,21 +83,21 @@ Flags:
 * `-N`: Change Network Settings
 
 ```bash
-./network-anomaly-detector-and-threat-mitigator <Interface_Name> [<Action_Flag>]
+sudo network-anomaly-detector-and-threat-mitigator <Interface_Name> [<Action_Flag>]
 ```
 
 Examples:
 
 ```bash
-./network-anomaly-detector-and-threat-mitigator eth0
+sudo network-anomaly-detector-and-threat-mitigator eth0
 ```
 
 ```bash
-./network-anomaly-detector-and-threat-mitigator eth0 -I
+sudo network-anomaly-detector-and-threat-mitigator eth0 -I
 ```
 
 ```bash
-./network-anomaly-detector-and-threat-mitigator eth0 -N
+sudo network-anomaly-detector-and-threat-mitigator eth0 -N
 ```
 
 Once the program is started, it will start picking up the packets on the network, analysing them and in case anomalous 
@@ -144,7 +144,7 @@ The following text is a sample output of the program being executed.
 **Execution Command:**
 
 ```bash
-./botnet-tracker wlp110s0
+sudo network-anomaly-detector-and-threat-mitigator wlp110s0
 ```
 
 **Output:**

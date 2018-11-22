@@ -21,6 +21,17 @@ use action::Action;
 
 fn main () {
 
+    // Check if a network interface was given as a parameter when running the
+    // tracker. If not, the program will end.
+    let iface_name: String = match env::args ().nth (1) {
+        Some (n) => n,
+        None => {
+            writeln! (io::stderr (), "\nUSAGE: sudo network-anomaly-detector-and-threat-mitigator <NETWORK INTERFACE> <ACTION_FLAG>").unwrap ();
+            help ();
+            process::exit (1);
+        }
+    };
+
     // Print the Process ID so it can later be tracked (Just to track performance)
     println! ("My pid is {}", process::id ());
 
@@ -43,16 +54,6 @@ fn main () {
 
     let mut keywords: List = List::new ("Keywords", "Keywords that will be looked into on the packets content");
     keywords.load("assets/keywords/command_control.txt", "Common commands that C&C traffic use");
-    
-    // Check if a network interface was given as a parameter when running the
-    // tracker. If not, the program will end.
-    let iface_name: String = match env::args ().nth (1) {
-        Some (n) => n,
-        None => {
-            writeln! (io::stderr (), "USAGE: botnet-tracker <NETWORK INTERFACE> <ACTION_FLAG>").unwrap ();
-            process::exit (1);
-        }
-    };
 
     let mut selected_action: Action = Action::NOTHING;
 
@@ -95,4 +96,14 @@ fn main () {
     } else {
         println!("The interface is down.");
     }
+}
+
+fn help () {
+    println! ("\nInterfaces Available:\n");
+    for interface in datalink::interfaces() {
+        println!("{}", interface.name);
+    }
+    println!("\nActions Available:\n");
+    println!("-I : Shut Down Network Interface\n");
+    println!("-N : Change Network Settings\n");
 }

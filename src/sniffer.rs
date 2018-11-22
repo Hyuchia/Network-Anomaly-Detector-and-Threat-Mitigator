@@ -28,6 +28,7 @@ use simple_packet::*;
 use simple_interface::*;
 
 use std::net::IpAddr;
+use std::process;
 
 use action::*;
 
@@ -164,6 +165,13 @@ impl <'a> Sniffer <'a> {
 		}
 	}
 
+	/// Handle an UDP Packet.
+	/// 
+	/// # Arguments
+	/// * `source: IpAddr` - The source address of the packet
+	/// * `destination: IpAddr` - The destination address of the packet
+	/// * `packet: &[u8] - The packet as a byte array
+	/// 
 	pub fn handle_udp_packet(&mut self, source: IpAddr, destination: IpAddr, packet: &[u8]) {
 		let udp = UdpPacket::new(packet);
 
@@ -202,7 +210,13 @@ impl <'a> Sniffer <'a> {
 		}
 	}
 
-	/// Handle ICMP packets.
+	/// Handle an ICMP Packet.
+	/// 
+	/// # Arguments
+	/// * `source: IpAddr` - The source address of the packet
+	/// * `destination: IpAddr` - The destination address of the packet
+	/// * `packet: &[u8] - The packet as a byte array
+	/// 
 	pub fn handle_icmp_packet(&mut self, source: IpAddr, destination: IpAddr, packet: &[u8]) {
 		let icmp_packet = IcmpPacket::new(packet);
 
@@ -259,6 +273,13 @@ impl <'a> Sniffer <'a> {
 		}
 	}
 
+	/// Handle an ICMP Packet for IPv6.
+	/// 
+	/// # Arguments
+	/// * `source: IpAddr` - The source address of the packet
+	/// * `destination: IpAddr` - The destination address of the packet
+	/// * `packet: &[u8] - The packet as a byte array
+	/// 
 	pub fn handle_icmpv6_packet(&mut self, source: IpAddr, destination: IpAddr, packet: &[u8]) {
 		let icmpv6_packet = Icmpv6Packet::new(packet);
 		if let Some(icmpv6_packet) = icmpv6_packet {
@@ -282,6 +303,12 @@ impl <'a> Sniffer <'a> {
 	}
 
 	/// Handle a TCP Packet.
+	/// 
+	/// # Arguments
+	/// * `source: IpAddr` - The source address of the packet
+	/// * `destination: IpAddr` - The destination address of the packet
+	/// * `packet: &[u8] - The packet as a byte array
+	/// 
 	pub fn handle_tcp_packet(&mut self, source: IpAddr, destination: IpAddr, packet: &[u8]) {
 		let tcp = TcpPacket::new(packet);
 
@@ -467,7 +494,10 @@ impl <'a> Sniffer <'a> {
 		let (_, mut rx) = match datalink::channel(&self.interface.interface, Default::default()) {
 			Ok (Ethernet (tx, rx)) => (tx, rx),
 			Ok (_) => panic!("packetdump: unhandled channel type: {}"),
-			Err (e) => panic!("packetdump: unable to create channel: {}", e),
+			Err (e) => {
+				println! ("Unable to create a Data Link Channel. Make sure you have enough priviledges. This program must be run with administrative permissions.\n{}", e);
+				process::exit (1);
+			},
 		};
 
 		loop {
